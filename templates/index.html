@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
+    <!-- Lien vers Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Bienvenue sur l'application</h1>
+        <div class="mt-3">
+            {% if current_user.is_authenticated %}
+                <p>Bonjour, {{ current_user.username }} !</p>
+                <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Accéder au tableau de bord</a>
+                <a href="{{ url_for('logout') }}" class="btn btn-danger">Déconnexion</a>
+            {% else %}
+                <p><a href="{{ url_for('login') }}" class="btn btn-primary">Connexion</a></p>
+                <p><a href="{{ url_for('signup') }}" class="btn btn-secondary">Inscription</a></p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

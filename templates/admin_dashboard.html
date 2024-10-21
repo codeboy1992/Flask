@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+    <h1>Bienvenue sur l'Admin Dashboard, {{ user.username }} !</h1>
+
+    <!-- Bouton pour retourner au dashboard personnel -->
+    <div class="mt-3">
+        <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Voir Dashboard Personnel</a>
+    </div>
+
+    <h4 class="mt-4">Liste des utilisateurs (par ordre d'inscription) :</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom d'utilisateur</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in users %}
+            <tr>
+                <td>{{ u.username }}</td>
+                <td>{{ u.email }}</td>
+                <td>
+                    <a href="{{ url_for('edit_user', user_id=u.id) }}" class="btn btn-warning">Modifier</a>
+                    <form method="POST" action="{{ url_for('delete_user', user_id=u.id) }}" style="display:inline;">
+                        <input type="password" name="admin_password" placeholder="Mot de passe Admin" required>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

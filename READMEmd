@@ -1,0 +1,18 @@
+
+
+1. Création de la structure de l'application Flask :
+Utiliser Flask pour créer le backend.
+Configurer un système de templates pour les pages web (inscription, login, dashboard).
+Utiliser Jinja pour rendre ces templates dynamiques.
+2. Gestion des utilisateurs :
+Créer une base de données SQLite3 pour stocker les informations des utilisateurs (nom, email, mot de passe, statut admin/user).
+Ajouter une route pour l'inscription (/signup), où les utilisateurs pourront s'inscrire en choisissant leur statut.
+Ajouter une route pour le login (/login) pour permettre aux utilisateurs de se connecter.
+3. Gestion des sessions et sécurité :
+Utiliser Flask-Login pour la gestion des sessions.
+Protéger les routes avec une vérification du statut de connexion.
+Hacher les mots de passe avec werkzeug.security pour les sécuriser.
+4. Tableau de bord :
+Créer une route /dashboard qui sera accessible seulement aux utilisateurs connectés.
+Si l'utilisateur est un administrateur, il verra un tableau de bord avec les informations de tous les utilisateurs (statut, email, etc.).
+Si l'utilisateur est un simple utilisateur, il pourra uniquement voir ses informations personnelles.
